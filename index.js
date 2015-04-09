@@ -7,7 +7,7 @@ function generate(tuples, options) {
   var headers = [
     'From: ' + (options.from || ('nobody ' + Date())),
     'MIME-Version: 1.0',
-    'Content-Type:multipart/mixed; boundary=' + boundary
+    'Content-Type: multipart/mixed; boundary=' + boundary
   ];
 
   var delimiter = '--' + boundary;
