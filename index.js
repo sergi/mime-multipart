@@ -10,7 +10,7 @@ function generate(tuples, options) {
     'Content-Type:multipart/mixed; boundary=' + boundary
   ];
 
-  var delimiter = CRLF + '--' + boundary;
+  var delimiter = '--' + boundary;
   var closeDelimiter = delimiter + '--';
 
   var parts = tuples.map(function(tuple, i) {
@@ -21,13 +21,13 @@ function generate(tuples, options) {
       'MIME-Version: 1.0',
       'Content-Type: ' + mimetype + '; charset="' + encoding + '"',
       'Content-Transfer-Encoding: 7bit',
-      'Content-Disposition: attachment; filename="' + filename + '"'
+      'Content-Disposition: attachment; filename="' + filename + '"',
     ].join(CRLF)+CRLF;
 
-    return [delimiter, fileHeaders, tuple.content, closeDelimiter].join(CRLF);
+    return [delimiter, fileHeaders, tuple.content].join(CRLF);
   });
 
-  return [headers.join(CRLF), parts].join(CRLF);
+  return [headers.join(CRLF), parts.join(CRLF+CRLF), closeDelimiter].join(CRLF+CRLF);
 }
 
 module.exports = {
