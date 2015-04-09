@@ -22,7 +22,7 @@ function generate(tuples, options) {
       'Content-Type: ' + mimetype + '; charset="' + encoding + '"',
       'Content-Transfer-Encoding: 7bit',
       'Content-Disposition: attachment; filename="' + filename + '"'
-    ].join(CRLF);
+    ].join(CRLF)+CRLF;
 
     return [delimiter, fileHeaders, tuple.content, closeDelimiter].join(CRLF);
   });
