@@ -22,12 +22,16 @@ function generate(tuples, options) {
       'Content-Type: ' + mimetype + '; charset="' + encoding + '"',
       'Content-Transfer-Encoding: 7bit',
       'Content-Disposition: attachment; filename="' + filename + '"',
-    ].join(CRLF)+CRLF;
+    ].join(CRLF) + CRLF;
 
     return [delimiter, fileHeaders, tuple.content].join(CRLF);
   });
 
-  return [headers.join(CRLF), parts.join(CRLF+CRLF), closeDelimiter].join(CRLF+CRLF);
+  return [
+    headers.join(CRLF),
+    parts.join(CRLF + CRLF),
+    closeDelimiter
+  ].join(CRLF + CRLF);
 }
 
 module.exports = {
