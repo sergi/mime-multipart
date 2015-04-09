@@ -1,7 +1,7 @@
 {
   "name": "mime-multipart",
   "version": "0.0.1",
-  "description": "Library to help creating Mime Multi Part Archives",
+  "description": "Library to help create Mime Multi Part Archives",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
@@ -11,8 +11,12 @@
     "form",
     "multipart"
   ],
-  "author": "Sergi Mansilla",
-  "license": "ISC",
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/sergi/mime-multipart"
+  },
+  "author": "Sergi Mansilla <sergi.mansilla@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "mime": "^1.3.4",
     "node-uuid": "^1.4.3"

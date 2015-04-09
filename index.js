@@ -3,9 +3,9 @@ var CRLF = '\r\n';
 
 function generate(tuples, options) {
   options = options || {};
-  var boundary = options.boundary || uuid;
+  var boundary = options.boundary || uuid();
   var headers = [
-    'From: ' + options.from || 'nobody' + Date(),
+    'From: ' + options.from || ('nobody' + Date()),
     'MIME-Version: 1.0',
     'Content-Type:multipart/mixed; boundary=' + boundary
   ];
@@ -15,7 +15,6 @@ function generate(tuples, options) {
 
   var parts = tuples.map(function(tuple, i) {
     var mimetype = tuple.mime || 'text/plain';
-    console.log(tuple);
     var encoding = tuple.encoding || 'utf8';
     var fileHeaders = [
       'MIME-Version: 1.0',
