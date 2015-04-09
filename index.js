@@ -16,11 +16,12 @@ function generate(tuples, options) {
   var parts = tuples.map(function(tuple, i) {
     var mimetype = tuple.mime || 'text/plain';
     var encoding = tuple.encoding || 'utf8';
+    var filename = tuple.filename || ('file' + i);
     var fileHeaders = [
       'MIME-Version: 1.0',
       'Content-Type: ' + mimetype + '; charset="' + encoding + '"',
       'Content-Transfer-Encoding: 7bit',
-      'Content-Disposition: attachment; filename="file' + i + '"'
+      'Content-Disposition: attachment; filename="' + filename + '"'
     ].join(CRLF);
 
     return [delimiter, fileHeaders, tuple.content, closeDelimiter].join(CRLF);
