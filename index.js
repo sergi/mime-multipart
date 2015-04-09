@@ -5,7 +5,7 @@ function generate(tuples, options) {
   options = options || {};
   var boundary = options.boundary || uuid();
   var headers = [
-    'From: ' + options.from || ('nobody' + Date()),
+    'From: ' + (options.from || ('nobody ' + Date())),
     'MIME-Version: 1.0',
     'Content-Type:multipart/mixed; boundary=' + boundary
   ];
